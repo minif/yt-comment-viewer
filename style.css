@@ -1,4 +1,59 @@
 html, body {
   height: 100%;
   width: 100%;
+	background-color: #F4f3f3;
+}
+
+.ytcomment {
+	background-color: #FFFFFF;
+	margin:10px auto;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	width: 90%;
+	padding: 10px;
+	gap: 10px;
+}
+
+.ytcontent {
+	width: inherit;
+}
+
+.ytlikebar {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.yttext {
+	margin: 3px;
+	white-space: pre-line;
+	font-family: Roboto, Arial, sans-serif;
+	color: #333;
+	line-height: 1.2;
+	word-wrap: break-word;
+
+}
+
+.ytpfp {
+	width: 50px;
+}
+
+.ytchannelname {
+	color: #3c89c8;
+}
+
+.ytothertext {
+	color: #c1bfc1;
+	font-size: 0.7rem;
+}
+
+.ytlikes {
+	color: #3c89c8;
+	font-size: 0.85rem;
+}
+
+.ytreply {
+	color: #c1bfc1;
+	font-size: 0.8rem;
 }
