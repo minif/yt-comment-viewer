@@ -6,7 +6,7 @@ html, body {
 
 .ytcomment {
 	background-color: #FFFFFF;
-	margin:10px auto;
+	margin:auto;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -16,7 +16,7 @@ html, body {
 }
 
 .ytcontent {
-	width: inherit;
+	overflow: hidden;
 }
 
 .ytlikebar {
