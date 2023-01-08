@@ -86,6 +86,8 @@ var uiHandler = {
 		ytlikes.className = 'yttext ytlikes';
 		ytlikes.innerText = likes;
 
+		var spacer = document.createElement("a");
+		
 		var likes = document.createElement("img");
 		likes.src = "like.png";
 
@@ -97,6 +99,7 @@ var uiHandler = {
 		ytlikebar.appendChild(ytdot);
 		ytlikebar.appendChild(ytlikes);
 		ytlikebar.appendChild(likes);
+		ytlikebar.appendChild(spacer);
 		ytlikebar.appendChild(dislikes);
 
 		ytcontent.appendChild(ytchannelname);
