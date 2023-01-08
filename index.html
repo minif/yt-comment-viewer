@@ -4,14 +4,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>replit</title>
+	<title>Youtube Comment Viewer</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 	<input type="file" id='input'/>
 	<button onclick="upload()">Run</button>
-	
+	<button onclick="clearAll()">Clear</button>
 	<div id="ytcommentcontiner">
 		<div class="ytcontainer">
 			<div class="ytcomment">
@@ -19,11 +19,14 @@
 				<div class="ytcontent">
 					<a class="yttext ytchannelname">minif</a>
 					<a class="yttext ytothertext">3 days ago</a>
-					<p class="yttext">Wow
-						test
-						test
-						testwupefwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-						test</p>
+					<p class="yttext">This is a basic page that lets you upload the JSON of comments from Youtube's API and view them as a Youtube Comment Section.
+
+					To use this tool, click "Choose File" above and select a text file containing JSON from Youtube's API. Then, click "Run" to load comments from that file. Note that adding JSON files is additive, so if you have multiple JSON files from a single comment section, they can be combined into one view. If you would like to view a different channel, use the "Clear" button.
+						
+					The focus of this tool was to view archived JSON of the now dead "Discussion" tab that every YouTube channel had. However, I believe that any comments section should work just fine (Please note that this has not been tested yet and is not yet confirmed to work.)
+
+					This page is being hosted under <a href="https://replit.com">replit.com</a>. You can also find the source code <a href="https://github.com/minif/yt-comment-viewer">here</a>.
+					</p>
 					<div class="ytlikebar">
 						<a class="yttext ytreply">Reply</a>
 						<a class="yttext ytreply">•</a>
@@ -40,9 +43,19 @@
 				<img class="ytpfp" src="unnamed.jpg">
 				<div class="ytcontent">
 					<a class="yttext ytchannelname">minif</a>
-					<a class="yttext ytothertext">3 days ago</a>
-					<p class="yttext">Works!
-						rrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+					<a class="yttext ytothertext">2 days ago</a>
+					<p class="yttext">Here is an <a href="https://archive.org/download/archivedv2/archivedv2.zip/archivedv2%2Fchannel-Coding%20Secrets%28UCkY047vYjF92-8HcoVTXAOg%29-json.txt">example</a> JSON file for the channel "Coding Secrets" that can be used.
+
+						This tool currently supports two kinds of formats for JSON files:
+						- Raw requests: These are saved directly from Youtube's API with no modification using the <a href="https://developers.google.com/youtube/v3/docs/commentThreads/list">commentThreads</a> API call. 
+						- Modified requests: This is a form I created that only includes the array contained in result.items. You can see this with the above example. Because the API only includes some of the requests and a nextPageToken, I recursively call the API to get a collection of JSON responses and then combine their result.items into one large array. Since commentThreads only includes 5 replies, I also use the <a href="https://developers.google.com/youtube/v3/docs/comments/list">comments</a> API call to get all the replies.
+
+						TODO:
+						- Viewing replies using raw requests needs to be implemented. (Uploading the JSON from a "comments" API call needs to detect what comment it is apart of and then add those comments.)
+						- Add sorting options (Newest, Oldest, Most liked)
+						- Grab current profile pictures in case the original gives a 404 error
+						- Implement a better way of loading (When there is a large amount it takes a long time, maybe load some and then continue to load more.)
+						- Make the buttons look nicer
 					</p>
 					<div class="ytlikebar">
 						<a class="yttext ytreply">Reply</a>
@@ -55,10 +68,12 @@
 			</div>
 		</div>
 	</div>
+	<button style="display:none" onclick="next()" id="next">Load More</button>
+
 	
+	<script src="ui-handler.js"></script>
 	<script src="comments.js"></script>
 	<script src="script.js"></script>
-	<script src="ui-handler.js"></script>
 </body>
 
 </html>

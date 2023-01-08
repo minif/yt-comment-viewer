@@ -8,7 +8,7 @@ Constructs and displays the comments.
 //Namespace for anything UI related
 var uiHandler = {
 	commentDiv: document.getElementById('ytcommentcontiner'),
-
+	loadMore: document.getElementById('next'),
 	/*
 	clearAll
 		Removes all comments from the UI
@@ -21,7 +21,7 @@ var uiHandler = {
 	addPost
 		Adds a comment to the UI
 	*/
-	addPost: function(username, pfp, date, message, likes, isReply) {
+	addPost: function(username, pfp, date, message, likes, url, isReply) {
 		/*
 		Structure:
 		ytcontainer
@@ -61,6 +61,7 @@ var uiHandler = {
 		var ytchannelname = document.createElement("a");
 		ytchannelname.className = 'yttext ytchannelname';
 		ytchannelname.innerText = username;
+		ytchannelname.href=url;
 
 		var ytothertext = document.createElement("a");
 		ytothertext.className = 'yttext ytothertext';
@@ -68,7 +69,7 @@ var uiHandler = {
 
 		var ytmessage = document.createElement("p");
 		ytmessage.className = 'yttext';
-		ytmessage.innerText = message;
+		ytmessage.innerHTML = message;
 
 		var ytlikebar = document.createElement("div");
 		ytlikebar.className = 'ytlikebar';
@@ -109,5 +110,8 @@ var uiHandler = {
 		ytcontainer.appendChild(ytcomment);
 
 		this.commentDiv.appendChild(ytcontainer);
-	}
+	},
+
+	showLoadMore: function() {this.loadMore.style.display = "block"},
+	hideLoadMore: function() {this.loadMore.style.display = "none"},
 };

@@ -41,6 +41,7 @@ html, body {
 
 .ytchannelname {
 	color: #3c89c8;
+	text-decoration: none;
 }
 
 .ytothertext {
