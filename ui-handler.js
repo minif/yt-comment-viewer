@@ -91,6 +91,7 @@ var uiHandler = {
 		var dislikes = document.createElement("img");
 		dislikes.src = "dislike.png";
 
+		//Add everything once done
 		ytlikebar.appendChild(ytreply);
 		ytlikebar.appendChild(ytdot);
 		ytlikebar.appendChild(ytlikes);
